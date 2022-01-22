@@ -1,0 +1,21 @@
+.s-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  user-select: none;
+
+  padding: 5px;
+  font-weight: 500;
+
+  &__city {
+    display: flex;
+    align-items: center;
+
+    // max-width: 205px;
+
+    // white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+  }
+}

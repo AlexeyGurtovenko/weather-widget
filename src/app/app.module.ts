@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { BaseComponent } from './base-component/base.component';
-import { SettingsBarComponent } from './settings-bar/settings-bar.component';
+import { AppComponent } from './components/app.component';
+import { BaseComponent } from './components/base-component/base.component';
+import { SettingsBarComponent } from './components/settings-bar/settings-bar.component';
 
 @NgModule({
   declarations: [
