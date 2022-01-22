@@ -1,3 +1,10 @@
 <div class="ww-wrapper">
   <app-settings-bar></app-settings-bar>
+  <app-current-weather></app-current-weather>
+
+  <div class="daily-forecast">
+    <app-daily-forecast-short
+      *ngFor="let day of 7 | range"
+    ></app-daily-forecast-short>
+  </div>
 </div>
