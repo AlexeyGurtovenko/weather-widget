@@ -1,4 +1,4 @@
-<div class="week-day">Sat</div>
-<img src="../../../assets/icons/day/116.png" alt="" />
-<div class="temp temp-max">36&#176;C</div>
-<div class="temp temp-min">36&#176;C</div>
+<div class="week-day">{{ weekday }}</div>
+<img [src]="imgUrl" alt="img" />
+<div class="temp temp-max">{{ maxTemp }}&#176;{{ tempUnits }}</div>
+<div class="temp temp-min">{{ minTemp }}&#176;{{ tempUnits }}</div>

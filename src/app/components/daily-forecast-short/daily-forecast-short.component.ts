@@ -1,18 +1,16 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-daily-forecast-short',
   templateUrl: './daily-forecast-short.component.html',
   styleUrls: ['./daily-forecast-short.component.scss']
 })
-export class DailyForecastShortComponent implements OnInit {
+export class DailyForecastShortComponent {
 
-  @Input() weekday: string = '';
-  @Output() selected = new EventEmitter<boolean>();
+  @Input() weekday: string = 'Mon';
+  @Input() imgUrl: string = '';
+  @Input() maxTemp: number = NaN;
+  @Input() minTemp: number = NaN;
+  @Input() tempUnits: string = 'C';
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
