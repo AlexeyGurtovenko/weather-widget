@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './components/app.component';
 import { BaseComponent } from './components/base-component/base.component';
@@ -18,7 +19,8 @@ import { RangePipe } from './pipes/range.pipe';
     RangePipe,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
