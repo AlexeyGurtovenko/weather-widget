@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WeatherApiService } from '../services/weather-api.service';
 
 @Component({
@@ -6,9 +6,14 @@ import { WeatherApiService } from '../services/weather-api.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  dailyForecast$ = this._weatherService.dailyForecast$;
 
   constructor (private _weatherService: WeatherApiService) {
-    // this._weatherService.getDailyForecast()
+  }
+
+  ngOnInit(): void {
+    this._weatherService.updateDailyForecast();
   }
 }
