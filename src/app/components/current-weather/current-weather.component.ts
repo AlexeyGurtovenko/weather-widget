@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { WeatherApiService } from 'src/app/services/weather-api.service';
 
 @Component({
   selector: 'app-current-weather',
   templateUrl: './current-weather.component.html',
   styleUrls: ['./current-weather.component.scss']
 })
-export class CurrentWeatherComponent implements OnInit {
+export class CurrentWeatherComponent {
 
-  constructor() { }
+  current$ = this._weatherService.current$;
 
-  ngOnInit(): void {
-  }
-
+  constructor(private _weatherService: WeatherApiService) { }
 }

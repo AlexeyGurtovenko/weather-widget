@@ -1,7 +1,9 @@
 .curr-forecast {
   display: flex;
   align-items: center;
-  padding: 15px 0;
+  justify-content: center;
+
+  padding: 12px 0;
 
   user-select: none;
 
@@ -34,9 +36,5 @@
     > sup {
       font-size: 20px;
     }
-  }
-
-  &__img {
-    padding: 0 10px 0 5px;
   }
 }
