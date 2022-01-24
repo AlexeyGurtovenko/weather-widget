@@ -36,7 +36,7 @@ interface IDayAstroCondition {
     moonrise: string;
     moonset: string;
     moon_phase: string;
-    moon_illumination: number;
+    moon_illumination: string;
 }
 
 interface IHourForecast extends IBaseWeatherState {
