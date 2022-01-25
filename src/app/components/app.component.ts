@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IFullDailyForecast } from '../models/daily-forecast.model';
 import { WeatherApiService } from '../services/weather-api.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { WeatherApiService } from '../services/weather-api.service';
 export class AppComponent implements OnInit {
 
   dailyForecast$ = this._weatherService.dailyForecast$;
+
+  forecast: IFullDailyForecast | null = null;
 
   constructor (private _weatherService: WeatherApiService) {
   }

@@ -55,7 +55,7 @@ const response = {
         }, "hour": [
           {
             "time_epoch": 1642982400,
-            "time": "2022-01-24 00:00",
+            "time": "2022-01-25 00:00",
             "temp_c": 5.5,
             "temp_f": 41.9,
             "is_day": 0,
@@ -991,7 +991,7 @@ const response = {
           }
         ]
       },{
-        "date": "2022-01-24",
+        "date": "2022-01-25",
         "date_epoch": 1642982400,
         "day": {
           "maxtemp_c": 9.4,

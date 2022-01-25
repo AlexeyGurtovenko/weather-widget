@@ -6,15 +6,40 @@
   line-height: 1rem;
   letter-spacing: 0.01rem;
 
-  // color: cornflowerblue;
+  backdrop-filter: blur(1px) saturate(180%);
+  -webkit-backdrop-filter: blur(1px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.38);
 
-  backdrop-filter: blur(9px) saturate(180%);
-  -webkit-backdrop-filter: blur(9px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.55);
-  border-radius: 12px;
+  border-radius: 12px 12px 0 0;
+
   border: 1px solid rgba(209, 213, 219, 0.3);
+
+  z-index: 999;
 }
 
 .daily-forecast {
   display: flex;
+}
+
+.extended {
+  width: 272px;
+  display: flex;
+  justify-content: center;
+
+  backdrop-filter: blur(1px) saturate(180%);
+  -webkit-backdrop-filter: blur(1px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.38);
+
+  &__wrapper {
+    width: 50px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-time {
+    font-size: 15px;
+    font-weight: bold;
+  }
 }
