@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
+import { OverlayModule } from '@angular/cdk/overlay';
+
 import { AppComponent } from './components/app.component';
 import { BaseComponent } from './components/base-component/base.component';
 import { SettingsBarComponent } from './components/settings-bar/settings-bar.component';
@@ -20,7 +22,8 @@ import { RangePipe } from './pipes/range.pipe';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent]
