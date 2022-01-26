@@ -19,4 +19,21 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this._weatherService.updateDailyForecast();
   }
+
+  showExtendedForecast(day: IFullDailyForecast) {
+    const startDate = new Date();
+    const endDate = new Date(new Date().setHours(new Date().getHours() + 6));
+
+    this.forecast = day;
+    
+    this.forecast.hour = 
+    this.forecast.hour.filter(hour => {
+      const date = new Date(hour.time);
+      return date >= startDate && date <= endDate;
+    })
+  }
+
+  hideExtendedForecast() {
+    this.forecast = null;
+  }
 }

@@ -1,4 +1,8 @@
 <div class="week-day">{{ weekday }}</div>
-<img [src]="imgUrl" alt="img" />
-<div class="temp temp-max">{{ maxTemp }}&#176;{{ tempUnits }}</div>
-<div class="temp temp-min">{{ minTemp }}&#176;{{ tempUnits }}</div>
+<div class="wrapper">
+  <img [src]="imgUrl" alt="img" />
+  <div>
+    <div class="temp temp-max">{{ maxTemp }}&#176;{{ tempUnits }}</div>
+    <div class="temp temp-min">{{ minTemp }}&#176;{{ tempUnits }}</div>
+  </div>
+</div>

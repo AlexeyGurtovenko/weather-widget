@@ -31,15 +31,48 @@
   background-color: rgba(255, 255, 255, 0.38);
 
   &__wrapper {
+    font-size: 15px;
     width: 50px;
     text-align: center;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
+
+    > img {
+      width: 44px;
+    }
   }
 
   &-time {
-    font-size: 15px;
     font-weight: bold;
+    padding: 5px;
   }
+
+  &-temp {
+    font-size: 17px;
+    font-weight: bold;
+    padding: 5px;
+  }
+
+  &-wind {
+    padding: 4px;
+  }
+
+  &-precipitation {
+    padding: 3px;
+  }
+}
+
+.collapsable {
+  display: inline-block;
+  overflow: hidden;
+  height: 0;
+  transition: height 1s;
+  -webkit-transition: height 1s;
+  -moz-transition: height 1s;
+  -o-transition: height 1s;
+}
+.collapsable.show {
+  height: 100px;
 }

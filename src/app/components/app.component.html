@@ -1,5 +1,9 @@
 <div class="ww-wrapper">
   <app-settings-bar></app-settings-bar>
+  <!-- <app-current-weather
+    class="collapsable"
+    [class.show]="show"
+  ></app-current-weather> -->
   <app-current-weather></app-current-weather>
 
   <div
@@ -14,7 +18,8 @@
       [imgUrl]="day.day.condition.icon"
       [maxTemp]="day.day.maxtemp_c"
       [minTemp]="day.day.mintemp_c"
-      (mouseenter)="forecast = day"
+      (mouseenter)="showExtendedForecast(day)"
+      (mouseleave)="hideExtendedForecast()"
     ></app-daily-forecast-short>
 
     <ng-template
@@ -25,21 +30,19 @@
       [cdkConnectedOverlayOrigin]="trigger"
       [cdkConnectedOverlayOpen]="!!forecast"
     >
-      <ng-container
-        *ngTemplateOutlet="extendedForecast; context: forecast"
-      ></ng-container>
+      <ng-container *ngTemplateOutlet="extendedForecast"></ng-container>
     </ng-template>
   </div>
 </div>
 
 <ng-template #extendedForecast>
-  <div class="extended">
-    <div *ngFor="let hour of 5 | range" class="extended__wrapper">
-      <div class="extended-time">02 <sup>00</sup></div>
-      <img class="extended-img" />
-      <div class="extended-temp">02 <sup>00</sup></div>
-      <div class="extended-wind">02 <sup>00</sup></div>
-      <div class="extended-precipitation">02 <sup>00</sup></div>
+  <div *ngIf="forecast" class="extended">
+    <div *ngFor="let hour of forecast.hour" class="extended__wrapper">
+      <div class="extended-time">{{ hour.time | date: "h" }} <sup>00</sup></div>
+      <img [src]="hour.condition.icon" />
+      <div class="extended-temp">{{ hour.temp_c }} <sup>&#176;</sup></div>
+      <div class="extended-wind">{{ hour.wind_kph }} <sup>km/h</sup></div>
+      <div class="extended-precipitation">{{ hour.humidity }} %</div>
     </div>
   </div>
 </ng-template>
