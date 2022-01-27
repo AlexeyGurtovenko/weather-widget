@@ -21,16 +21,10 @@ export class AppComponent implements OnInit {
   }
 
   showExtendedForecast(day: IFullDailyForecast) {
-    const startDate = new Date();
-    const endDate = new Date(new Date().setHours(new Date().getHours() + 6));
-
-    this.forecast = day;
+    this.forecast = Object.assign(this.forecast ?? {}, day);
     
-    this.forecast.hour = 
-    this.forecast.hour.filter(hour => {
-      const date = new Date(hour.time);
-      return date >= startDate && date <= endDate;
-    })
+    this.forecast.hour =
+      this.forecast.hour.filter((_, index) => index % 4 === 0); // every fourth hour of the day
   }
 
   hideExtendedForecast() {

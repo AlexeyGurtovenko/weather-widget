@@ -10,17 +10,17 @@
     *ngIf="dailyForecast$ | async as dailyForecast"
     class="daily-forecast"
     cdkOverlayOrigin
-    #trigger="cdkOverlayOrigin"
-  >
+    #trigger="cdkOverlayOrigin">
+
     <app-daily-forecast-short
       *ngFor="let day of dailyForecast"
-      [date]="day.date"
+      [weekday]="(day.date | date: 'EEE') ?? ''"
       [imgUrl]="day.day.condition.icon"
       [maxTemp]="day.day.maxtemp_c"
       [minTemp]="day.day.mintemp_c"
       (mouseenter)="showExtendedForecast(day)"
-      (mouseleave)="hideExtendedForecast()"
-    ></app-daily-forecast-short>
+      (mouseleave)="hideExtendedForecast()">
+    </app-daily-forecast-short>
 
     <ng-template
       *ngIf="forecast"
@@ -28,8 +28,8 @@
       cdkConnectedOverlayHasBackdrop
       cdkConnectedOverlayBackdropClass="ww-wrapper"
       [cdkConnectedOverlayOrigin]="trigger"
-      [cdkConnectedOverlayOpen]="!!forecast"
-    >
+      [cdkConnectedOverlayOpen]="!!forecast">
+
       <ng-container *ngTemplateOutlet="extendedForecast"></ng-container>
     </ng-template>
   </div>
@@ -38,11 +38,9 @@
 <ng-template #extendedForecast>
   <div *ngIf="forecast" class="extended">
     <div *ngFor="let hour of forecast.hour" class="extended__wrapper">
-      <div class="extended-time">{{ hour.time | date: "h" }} <sup>00</sup></div>
+      <div class="extended-time">{{ hour.time | date: "H" }} <sup>00</sup></div>
       <img [src]="hour.condition.icon" />
       <div class="extended-temp">{{ hour.temp_c }} <sup>&#176;</sup></div>
-      <div class="extended-wind">{{ hour.wind_kph }} <sup>km/h</sup></div>
-      <div class="extended-precipitation">{{ hour.humidity }} %</div>
     </div>
   </div>
 </ng-template>
