@@ -10,6 +10,10 @@
   font-size: 15px;
 
   border-bottom: 1px solid rgba(209, 213, 219, 0.9);
+
+  > img {
+    cursor: pointer;
+  }
 }
 
 .city-wrapper {
@@ -17,10 +21,36 @@
   align-items: center;
 
   > img {
-    margin: 0 10px 0 5px;
+    margin: 0 3px 0 5px;
+    cursor: pointer;
   }
 
-  // white-space: nowrap;
-  // overflow: hidden;
-  // text-overflow: ellipsis;
+  > input[type="text"] {
+    width: 100%;
+
+    padding: 4px 8px;
+    border: none;
+    -webkit-transition: 0.1s;
+    transition: 0.5s;
+    outline: none;
+
+    font-weight: bold;
+
+    border-radius: 1px;
+
+    background: transparent;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      background: whitesmoke;
+      cursor: text;
+    }
+  }
 }

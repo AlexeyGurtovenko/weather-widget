@@ -4,7 +4,16 @@
     src="../../assets/icons/search.svg"
     alt="Search icon"
   />
-  {{ cityName }}
+
+  <input type="text" list="dynamicCityList" [formControl]="search" />
+  <datalist id="dynamicCityList" (click)="onChange($event)">
+    <option
+      *ngFor="let city of cityList"
+      [value]="city.name + ', ' + city.country"
+    >
+      {{ city.name + ", " + city.country }}
+    </option>
+  </datalist>
 </div>
 
 <img
