@@ -2,27 +2,23 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   user-select: none;
-
   padding: 10px 5px;
   font-weight: 500;
   font-size: 15px;
-
   border-bottom: 1px solid rgba(209, 213, 219, 0.9);
 
-  > img {
-    cursor: pointer;
+  > svg {
+    width: 20px;
+    height: 20px;
+    padding: 0 5px;
   }
 }
 
 .city-wrapper {
   display: flex;
   align-items: center;
-
-  > img {
-    margin: 0 3px 0 5px;
-  }
+  width: 100%;
 
   > input[type="text"] {
     width: 100%;
