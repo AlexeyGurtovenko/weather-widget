@@ -5,12 +5,15 @@
     alt="Search icon"
   />
 
-  <input type="text" list="dynamicCityList" [formControl]="search" />
-  <datalist id="dynamicCityList" (click)="onChange($event)">
-    <option
-      *ngFor="let city of cityList"
-      [value]="city.name + ', ' + city.country"
-    >
+  <input
+    #cityInput
+    type="text"
+    list="dynamicCityList"
+    placeholder="{{ cityList[0].name }}"
+    (change)="onSelectionChange($event)"
+  />
+  <datalist id="dynamicCityList">
+    <option *ngFor="let city of cityList" [value]="city.name">
       {{ city.name + ", " + city.country }}
     </option>
   </datalist>
@@ -20,4 +23,5 @@
   style="width: 20px; height: 20px; padding-right: 5px"
   src="../../assets/icons/refresh.svg"
   alt="Refresh icon"
+  (click)="refresh()"
 />

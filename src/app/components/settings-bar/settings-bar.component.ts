@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, switchMap, takeUntil } from 'rxjs';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { debounceTime, distinctUntilChanged, filter, fromEvent, map, switchMap, takeUntil } from 'rxjs';
 import { ILocation } from 'src/app/models/location.model';
 import { WeatherApiService } from 'src/app/services/weather-api.service';
-import { DEDAULT_DEBOUNCE_TIME, DEFAULT_CITY_NAME } from '../../constants';
+import { DEDAULT_DEBOUNCE_TIME, DEFAULT_LOCATION } from '../../constants';
 import { BaseComponent } from '../base-component/base.component';
 
 @Component({
@@ -11,29 +10,36 @@ import { BaseComponent } from '../base-component/base.component';
   templateUrl: './settings-bar.component.html',
   styleUrls: ['./settings-bar.component.scss']
 })
-export class SettingsBarComponent extends BaseComponent implements OnInit  {
+export class SettingsBarComponent extends BaseComponent implements OnInit {
 
-  search: FormControl = new FormControl(DEFAULT_CITY_NAME);
+  @ViewChild('cityInput', { static: true }) search!: ElementRef;
 
-  cityList: ILocation[] = [];
+  selectedCity = DEFAULT_LOCATION.name;
+  cityList: ILocation[] = [DEFAULT_LOCATION];
 
-  constructor (private _weatherService: WeatherApiService) { 
+  constructor (private _weatherService: WeatherApiService) {
     super();
   }
 
   ngOnInit(): void {
-    this.search.valueChanges
+    fromEvent<Event>(this.search.nativeElement, 'input')
       .pipe(
+        map(event => (event.target as HTMLInputElement).value.trim().toLocaleLowerCase()),
         debounceTime(DEDAULT_DEBOUNCE_TIME),
-        filter((value: string) => value.trim().length > 3),
+        filter(value => value.length > 3),
         distinctUntilChanged(),
-        switchMap((value: string) => this._weatherService.searchLocation(value.trim().toLocaleLowerCase())),
+        switchMap(value => this._weatherService.searchLocation(value)),
         takeUntil(this.isAlive)
       )
       .subscribe(locations => this.cityList = locations);
   }
 
-  onChange(e: any) {
-    console.log(e);
-  } 
+  onSelectionChange(e: Event) {
+    this.selectedCity = (e.target as HTMLInputElement).value;
+    this._weatherService.updateDailyForecast(this.selectedCity);
+  }
+
+  refresh() {
+    this._weatherService.updateDailyForecast(this.selectedCity);
+  }
 }
