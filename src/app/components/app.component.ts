@@ -26,8 +26,4 @@ export class AppComponent implements OnInit {
     this.forecast.hour =
       this.forecast.hour.filter((_, index) => index % 4 === 0); // every fourth hour of the day
   }
-
-  hideExtendedForecast() {
-    this.forecast = null;
-  }
 }

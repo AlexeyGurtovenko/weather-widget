@@ -1,9 +1,5 @@
 <div class="ww-wrapper">
   <app-settings-bar></app-settings-bar>
-  <!-- <app-current-weather
-    class="collapsable"
-    [class.show]="show"
-  ></app-current-weather> -->
   <app-current-weather></app-current-weather>
 
   <div
@@ -19,17 +15,15 @@
       [maxTemp]="day.day.maxtemp_c"
       [minTemp]="day.day.mintemp_c"
       (mouseenter)="showExtendedForecast(day)"
-      (mouseleave)="hideExtendedForecast()">
+      (mouseleave)="forecast = null">
     </app-daily-forecast-short>
 
     <ng-template
       *ngIf="forecast"
       cdkConnectedOverlay
       cdkConnectedOverlayHasBackdrop
-      cdkConnectedOverlayBackdropClass="ww-wrapper"
       [cdkConnectedOverlayOrigin]="trigger"
       [cdkConnectedOverlayOpen]="!!forecast">
-
       <ng-container *ngTemplateOutlet="extendedForecast"></ng-container>
     </ng-template>
   </div>

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
 .ww-wrapper {
   width: max-content;
 
@@ -50,29 +52,8 @@
   }
 
   &-temp {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: bold;
     padding-bottom: 5px;
   }
-
-  &-wind {
-    padding: 4px;
-  }
-
-  &-precipitation {
-    padding: 3px;
-  }
-}
-
-.collapsable {
-  display: inline-block;
-  overflow: hidden;
-  height: 0;
-  transition: height 1s;
-  -webkit-transition: height 1s;
-  -moz-transition: height 1s;
-  -o-transition: height 1s;
-}
-.collapsable.show {
-  height: 100px;
 }
