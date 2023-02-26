@@ -4,7 +4,7 @@ A simple weather widget created for learning purposes.
 
 It is developed as an Angular module and turned into a custom element. 
 
-Weather and location (for implementing search bar autocomplete) data is provided by [Weather API](https://www.weatherapi.com/).
+Weather and location data is provided by [Weather API](https://www.weatherapi.com/).
 
 
 ![image](https://user-images.githubusercontent.com/66733152/151999962-526e604a-0e8a-4421-b4ad-5af3a8404605.png)
